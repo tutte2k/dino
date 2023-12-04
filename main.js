@@ -1,9 +1,11 @@
-import Game from "./src/game";
-const canvas = document.getElementById("cvs");
+import Game from "./src/game.js";
+
+
+export const canvas = document.getElementById("cvs");
 canvas.width = 2048;
 canvas.height = 1546;
-const ctx = canvas.getContext("2d");
-const assets = {
+
+export const assets = {
   player: document.getElementById("player"),
   dinos: { protoceratosaurus: document.getElementById("protoceratosaurus") },
   background: {
@@ -19,8 +21,11 @@ const assets = {
     ground: document.getElementById("layer2"),
   },
 };
-
-const okKeys = [
+export const ui = {
+  wordContainer: document.getElementById("words"),
+  scroller: document.getElementById("scroller")
+}
+export const controls = [
   "ArrowLeft",
   "ArrowDown",
   "ArrowUp",
@@ -41,7 +46,7 @@ function addEventListeners() {
       const hit = game.focus.consume(e.key);
       if (hit) {
         game.player.reward();
-      } else if (okKeys.includes(e.key)) {
+      } else if (controls.includes(e.key)) {
         game.player.penalize();
       }
     } else {
@@ -50,40 +55,38 @@ function addEventListeners() {
         const hit = game.focus.consume(e.key);
         if (hit) {
           game.player.reward();
-        } else if (!okKeys.includes(e.key)) {
+        } else if (!controls.includes(e.key)) {
           game.player.penalize();
         }
       }
     }
-    // console.log("game.inputHandler.keyDown(e)");
-    // console.log("map.inputHandler.keyDown(e);");
   });
   window.addEventListener("keyup", (e) => {
     e.preventDefault();
-    // console.log("game.inputHandler.keyUp(e);");
-    // console.log("map.inputHandler.keyUp(e);");
   });
   window.addEventListener("resize", () => {
     game.onResize();
-    // console.log("game.onResize();");
   });
 }
 
-const game = new Game();
+
+const ctx = canvas.getContext("2d");
+const game = new Game(canvas);
 
 window.addEventListener("load", function () {
   addEventListeners();
   let lastTime = 0;
-
   function animate(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
+
     game.draw(ctx);
     game.update(deltaTime);
-
     window.requestAnimationFrame(animate);
   }
   animate(0);
 });
+
+

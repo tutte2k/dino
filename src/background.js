@@ -1,3 +1,4 @@
+import { assets } from "../main.js";
 export default class Background {
   constructor(game) {
     const { sky, sun, buildings, trees, ground } = assets.background;

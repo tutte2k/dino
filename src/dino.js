@@ -1,3 +1,5 @@
+import { assets } from "../main.js";
+import SpriteSheet from "./spritesheet.js";
 export default class Dino {
   constructor(word, game) {
     this.game = game;
@@ -7,8 +9,9 @@ export default class Dino {
     this.x = this.game.width;
     this.width = 287;
     this.height = 190;
-    this.y = canvas.height * 0.7;
+    this.y = this.game.height * 0.7;
     this.element = document.createElement("div");
+
     this.sprite = new SpriteSheet(
       assets.dinos.protoceratosaurus,
       this.width,
@@ -38,7 +41,7 @@ export default class Dino {
   }
   update(deltaTime) {
     this.x -= this.game.speed + this.speed;
-    if (this.x < canvas.width * 0.1) {
+    if (this.x < this.game.width * 0.1) {
       this.markedForDeletion = true;
       this.remove();
     }
