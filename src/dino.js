@@ -35,13 +35,13 @@ export default class Dino {
 
     this.element.style.left =
       (this.width * this.game.widthPercentage) / 2 +
-      (this.x - this.width * 0.5) * this.game.widthPercentage +
+      (this.x - this.width * 0.3) * this.game.widthPercentage +
       "px";
     this.sprite.draw(ctx, this.x, this.y);
   }
   update(deltaTime) {
     this.x -= this.game.speed + this.speed;
-    if (this.x < this.game.width * 0.1) {
+    if (this.x < 0 - this.width) {
       this.markedForDeletion = true;
       this.remove();
     }

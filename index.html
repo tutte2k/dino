@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="module" defer src="./main.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script type="module" defer src="./main.js"></script>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <div id="wrapper">
-    <canvas id="cvs"></canvas>
-    <div id="ui"></div>
-    <div id="words"></div>
-    <div id="scroller"></div>
-  </div>
-  <div style="display: none">
-    <img src="./assets/player.webp" id="player" />
-    <img src="./assets/dinos/protoceratosaurus.webp" id="protoceratosaurus" />
-    <img src="./assets/background/layer1.png" id="layer1" />
-    <img src="./assets/background/layer2.png" id="layer2" />
-    <img src="./assets/background/layer3.png" id="layer3" />
-    <img src="./assets/background/layer4.png" id="layer4" />
-    <img src="./assets/background/layer5.png" id="layer5" />
-    <img src="./assets/background/layer6.png" id="layer6" />
-    <img src="./assets/background/layer7.png" id="layer7" />
-    <img src="./assets/background/layer8.png" id="layer8" />
-  </div>
-</body>
-
+  <body>
+    <div id="wrapper">
+      <canvas id="cvs"></canvas>
+      <div id="ui"></div>
+      <div id="words"></div>
+      <div id="scroller"></div>
+      <div id="crosshair">
+        <span>T</span><span>-</span><span>R</span><span>E</span><span>X</span>
+      </div>
+    </div>
+    <div style="display: none">
+      <img src="./assets/player.webp" id="player" />
+      <img src="./assets/dinos/protoceratosaurus.webp" id="protoceratosaurus" />
+      <img src="./assets/background/layer1.png" id="layer1" />
+      <img src="./assets/background/layer2.png" id="layer2" />
+      <img src="./assets/background/layer3.png" id="layer3" />
+      <img src="./assets/background/layer4.png" id="layer4" />
+      <img src="./assets/background/layer5.png" id="layer5" />
+      <img src="./assets/background/layer6.png" id="layer6" />
+      <img src="./assets/background/layer7.png" id="layer7" />
+      <img src="./assets/background/layer8.png" id="layer8" />
+    </div>
+  </body>
 </html>

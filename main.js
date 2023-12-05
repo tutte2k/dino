@@ -1,6 +1,5 @@
 import Game from "./src/game.js";
 
-
 export const canvas = document.getElementById("cvs");
 canvas.width = 2048;
 canvas.height = 1546;
@@ -23,8 +22,9 @@ export const assets = {
 };
 export const ui = {
   wordContainer: document.getElementById("words"),
-  scroller: document.getElementById("scroller")
-}
+  scroller: document.getElementById("scroller"),
+  crosshair: document.getElementById("crosshair"),
+};
 export const controls = [
   "ArrowLeft",
   "ArrowDown",
@@ -54,6 +54,14 @@ function addEventListeners() {
       if (game.focus) {
         const hit = game.focus.consume(e.key);
         if (hit) {
+          console.log(game.target, e.key);
+          if (game.target.toLocaleLowerCase().includes(e.key)) {
+            let spans = Array.from(ui.crosshair.children).filter(
+              (f) => f.innerHTML.toLowerCase() === e.key
+            );
+            spans.forEach((s) => s.classList.add("active"));
+          }
+
           game.player.reward();
         } else if (!controls.includes(e.key)) {
           game.player.penalize();
@@ -68,7 +76,6 @@ function addEventListeners() {
     game.onResize();
   });
 }
-
 
 const ctx = canvas.getContext("2d");
 const game = new Game(canvas);
@@ -88,5 +95,3 @@ window.addEventListener("load", function () {
   }
   animate(0);
 });
-
-
